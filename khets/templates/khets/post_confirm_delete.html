@@ -1,0 +1,16 @@
+{% extends 'khets/base.html' %}
+{% block content %}
+  <div class="content-section">
+    <form method='POST'>
+       {% csrf_token %}
+       <fieldset class="form-group">
+           <legend class="boarded-bottom mb-4"> Delete Info  </legend>
+           <h1> Are you want to Delete this post {{ object.name }}</h1>
+       </fieldset>
+       <div class="form-group">
+           <button class="btn btn-outline-danger" type="submit"> Delete </button>
+           <a class="btn btn-outline-secondary" href="{% url 'blog-detail' object.id %}"> Cancel </a>
+       </div>
+    </form>
+   </div> 
+{% endblock %}

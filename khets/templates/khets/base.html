@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>      
+  {% if messages %}
+      {% for message in messages %}
+            {{ message }}
+      {% endfor %}
+  {% endif %}  
+  {% block content %}{% endblock %}
+  {% if user.is_authenticated %}
+      <a href="{% url 'profile' %}"><h1> Profile </h1></a>
+      <a href="{% url 'blog-create' %}"><h1> Create </h1></a>
+      <a href="{% url 'logout' %}"><h1> logout </h1></a>
+  {% else %}
+      <a href="{% url 'form_user' %}"><h1> Singin </h1></a>
+      <a href="{% url 'login' %}"><h1> Login </h1></a>
+  {% endif %}
+</body>
+</html>

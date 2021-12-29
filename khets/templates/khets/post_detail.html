@@ -1,0 +1,16 @@
+{% extends 'khets/base.html' %}
+{% load static %}
+{% block content %}
+<h1> <a class='mr-2' href="{% url 'user-post' object.author.username %}"> {{ post.author }} </a> </h1>  
+<img class="rounded-circle account-img"src="{{ object.author.profile.image.url }}">
+<h1> {{ object.name }} </h1>
+<p> {{ object.content }} </p>
+<p> {{ object.address }} </p>
+<p> {{ object.Date|date:'F d, Y' }} </p>
+{% if object.author == user %}
+    <a href="{% url 'blog-update' object.id %}"><h1> Update </h1></a>
+    <a href="{% url 'blog-delete' object.id %}"><h1> Delete </h1></a>
+{% endif %}
+<a href = "{% url 'home' %}" ><h1>Home</h1></a>
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css'%}">
+{% endblock %}
