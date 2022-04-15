@@ -16,7 +16,7 @@ class UserPostListView(ListView):
     template_name='khets/user_post.html'
     context_object_name='posts'
     paginate_by=4
-    
+
     def get_queryset(self):
         user=get_object_or_404(User,username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('-Date')
@@ -26,7 +26,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin,CreateView):
     model=Post
-    fields=['name','content','address']
+    fields=['name','content','Phone_no']
 
     def form_valid(self,form):
         form.instance.author=self.request.user
@@ -34,7 +34,7 @@ class PostCreateView(LoginRequiredMixin,CreateView):
 
 class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
     model=Post
-    fields=['name','content','address']
+    fields=['name','content','Phone_no']
 
     def form_valid(self,form):
         form.instance.author=self.request.user
@@ -48,7 +48,7 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
 
 class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
     model=Post
-    success_url = '/khet/'
+    success_url = '/home/'
 
     def test_func(self):
         post=self.get_object()
