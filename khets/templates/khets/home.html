@@ -2,9 +2,9 @@
 {% load static %}
 {% block content %}
 {% for post in posts %}
-   <h1> <a class='mr-2' href="{% url 'user-post' post.author.username %}">{{ post.author }} </a> </h1>
+   <h3> <a class='mr-2' href="{% url 'user-post' post.author.username %}">{{ post.author }} </a> </h3>
    <img class="rounded-circle"src= "{{ post.author.profile.image.url }}">
-   <a href="{% url 'blog-detail'  post.id %}"> <h1>  {{ post.name }} </h1> </a>
+   <a href="{% url 'blog-detail'  post.id %}"> <h4>  {{ post.name }} </h4> </a>
    <p> {{ post.Date|date:'F d, Y' }} </p>
 {% endfor %} 
 {% if is_paginated %}
